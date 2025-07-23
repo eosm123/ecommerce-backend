@@ -6,7 +6,7 @@ async function getAllProducts() {
 }
 
 async function getProductById(id) {
-    const [rows] = await pool.query("SELECT * FROM products WHERE id =?", [id]);
+    const [rows] = await pool.query("SELECT * FROM products WHERE id = ?", [id]);
     return rows[0];
 }
 

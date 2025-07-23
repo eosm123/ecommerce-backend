@@ -77,6 +77,8 @@ async function createUser({name, email, password, salutation, country, marketing
 
 }
 
+// {name: String, email: String, salutation: String, country: String, marketingPrefences: [String]} -> 
+// whenever returning json object/look at parameters -> use back this contract (AKA Data Transfer Object)
 
 async function updateUser(id, { name, email, salutation, country, marketingPreferences }) {
   if (!id || typeof id !== 'number') {

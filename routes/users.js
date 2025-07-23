@@ -10,7 +10,7 @@ router.post('/register', async (req, res) => {
     try {
         const newUserId = await userService.registerUser(req.body);
         res.json({ 
-            "message": "Register a new user",
+            "message": "New user has been registered",
             "user_id": newUserId
           })
     } catch (e) {
@@ -82,6 +82,22 @@ router.get('/me', AuthenticateWithJWT, async(req, res) => {
         res.status(400).json({
             'message': 'Unable to get profile',
             'error': e
+        })
+    }
+})
+
+router.delete('/me', AuthenticateWithJWT, async(req,res)=>{
+    // console.log(req.userId)
+    try {
+        await userService.deleteUserAccount(req.userId);
+        res.json({
+            'message':'User has been deleted'
+        })
+
+    } catch (e) {
+        res.status(400).json({
+            'error': e,
+            'message': 'Unable to delete user'
         })
     }
 })

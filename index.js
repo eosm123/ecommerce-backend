@@ -13,12 +13,13 @@ app.use(cors());
 
 const productRouter = require('./routes/products')
 const userRouter = require('./routes/users')
+const cartRouter = require('./routes/cart')
 
 // Register the router
 // If the URL begins with /products, the rest of the URL will be checked in productRouter
 app.use('/api/products', productRouter); 
-
-app.use('/api/users', userRouter)
+app.use('/api/users', userRouter);
+app.use('/api/cart', cartRouter);
 
 // Routes
 app.get('/', (req, res) => {
